@@ -51,7 +51,7 @@ export default async function Header() {
       </a>,
     ],
     image: {
-      src: "/blue-hair.jpg",
+      src: "/running-parque-oriental.webp",
       alt: "avatar",
       width: 200,
       height: 200,
