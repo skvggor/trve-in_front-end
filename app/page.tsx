@@ -1,4 +1,5 @@
 import AboutMe from "@/components/aboutMe/aboutMe";
+import Background from "@/components/background/background";
 import Header from "@/components/header/header";
 import Listening from "@/components/listening/listening";
 import MadeBy from "@/components/madeBy/madeBy";
@@ -8,8 +9,10 @@ import Social from "@/components/social/social";
 
 export default function Home() {
   return (
-    <main
-      className="main-content
+    <>
+      <Background />
+      <main
+        className="main-content
         bg-gray-950
         flex
         flex-col
@@ -20,30 +23,30 @@ export default function Home() {
         md:pt-20
         md:px-5
         tall:min-h-[768px]"
-    >
-      <Header />
+      >
+        <Header />
 
-      <section
-        className="site-content
+        <section
+          className="site-content
           flex
           flex-col
           items-center
           justify-center
           w-full"
-      >
-        <AboutMe />
-        <Social />
-      </section>
+        >
+          <AboutMe />
+          <Social />
+        </section>
 
-      <footer
-        className="site-footer
+        <footer
+          className="site-footer
           flex
           flex-col
           items-center
           justify-center"
-      >
-        <div
-          className="holder
+        >
+          <div
+            className="holder
             flex
             flex-col
             items-center
@@ -51,14 +54,15 @@ export default function Home() {
             justify-center
             max-w-[1024px]
             md:flex-row"
-        >
-          <Running />
-          <Listening />
-        </div>
+          >
+            <Running />
+            <Listening />
+          </div>
 
-        <MadeBy />
-        <Mastodon />
-      </footer>
-    </main>
+          <MadeBy />
+          <Mastodon />
+        </footer>
+      </main>
+    </>
   );
 }
