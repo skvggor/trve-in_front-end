@@ -1,11 +1,9 @@
-import {
-  AudioLines,
-  FileCode,
-  GithubIcon,
-  Linkedin,
-  Medal,
-  Twitter,
-} from "lucide-react";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SkateboardingIcon from "@mui/icons-material/Skateboarding";
+import SourceIcon from "@mui/icons-material/Source";
+import SpeakerIcon from "@mui/icons-material/Speaker";
+import XIcon from "@mui/icons-material/X";
 
 import type { ISocial } from "@/components/social/social.d";
 
@@ -17,8 +15,10 @@ export default function Social() {
         title: "GitHub",
         href: "https://github.com/skvggor",
         icon: (
-          <GithubIcon
-            color="#0ea5e9"
+          <GitHubIcon
+            sx={{
+              color: "#0ea5e9",
+            }}
             width={24}
             height={24}
           />
@@ -29,8 +29,10 @@ export default function Social() {
         title: "LeetCode",
         href: "https://leetcode.com/skvggor/",
         icon: (
-          <FileCode
-            color="#0ea5e9"
+          <SourceIcon
+            sx={{
+              color: "#0ea5e9",
+            }}
             width={24}
             height={24}
           />
@@ -41,8 +43,10 @@ export default function Social() {
         title: "LinkedIn",
         href: "https://www.linkedin.com/in/marcker",
         icon: (
-          <Linkedin
-            color="#0ea5e9"
+          <LinkedInIcon
+            sx={{
+              color: "#0ea5e9",
+            }}
             width={24}
             height={24}
           />
@@ -53,8 +57,10 @@ export default function Social() {
         title: "Twitter",
         href: "https://twitter.com/skvggor",
         icon: (
-          <Twitter
-            color="#0ea5e9"
+          <XIcon
+            sx={{
+              color: "#0ea5e9",
+            }}
             width={24}
             height={24}
           />
@@ -65,8 +71,10 @@ export default function Social() {
         title: "Strava",
         href: "https://www.strava.com/athletes/18616728",
         icon: (
-          <Medal
-            color="#0ea5e9"
+          <SkateboardingIcon
+            sx={{
+              color: "#0ea5e9",
+            }}
             width={24}
             height={24}
           />
@@ -77,8 +85,10 @@ export default function Social() {
         title: "Last.fm",
         href: "https://last.fm/user/skvggor",
         icon: (
-          <AudioLines
-            color="#0ea5e9"
+          <SpeakerIcon
+            sx={{
+              color: "#0ea5e9",
+            }}
             width={24}
             height={24}
           />

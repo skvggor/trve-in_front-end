@@ -1,11 +1,11 @@
-import {
-  BatteryCharging,
-  BatteryWarning,
-  Bike,
-  Disc2,
-  Laptop,
-  Laugh,
-} from "lucide-react";
+"use client";
+
+import BatteryAlertIcon from "@mui/icons-material/BatteryAlert";
+import BatteryCharging50Icon from "@mui/icons-material/BatteryCharging50";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
+import RunCircleIcon from "@mui/icons-material/RunCircle";
+import SpeakerIcon from "@mui/icons-material/Speaker";
 
 import Loading from "@/components/loading/loading";
 import type {
@@ -19,9 +19,11 @@ const statuses: Record<string, IStatus> = {
     color: "text-sky-500",
     text: "Enjoying the weekend.",
     icon: (
-      <Laugh
+      <EmojiEmotionsIcon
         className="mr-1"
-        color="#0ea5e9"
+        sx={{
+          color: "#0ea5e9",
+        }}
         height={24}
         width={24}
       />
@@ -31,9 +33,11 @@ const statuses: Record<string, IStatus> = {
     color: "gray-500",
     text: "Sleeping.",
     icon: (
-      <BatteryWarning
+      <BatteryAlertIcon
         className="mr-1"
-        color="#6b7280"
+        sx={{
+          color: "#6b7280",
+        }}
         height={24}
         width={24}
       />
@@ -43,9 +47,11 @@ const statuses: Record<string, IStatus> = {
     color: "text-sky-500",
     text: "Having lunch.",
     icon: (
-      <BatteryCharging
+      <BatteryCharging50Icon
         className="mr-1"
-        color="#0ea5e9"
+        sx={{
+          color: "#0ea5e9",
+        }}
         height={24}
         width={24}
       />
@@ -55,9 +61,11 @@ const statuses: Record<string, IStatus> = {
     color: "text-red-700",
     text: "At work.",
     icon: (
-      <Laptop
+      <LaptopChromebookIcon
         className="mr-1"
-        color="#b91c1c"
+        sx={{
+          color: "#b91c1c",
+        }}
         height={24}
         width={24}
       />
@@ -67,9 +75,11 @@ const statuses: Record<string, IStatus> = {
     color: "text-sky-500",
     text: "Enjoying the life.",
     icon: (
-      <Bike
+      <RunCircleIcon
         className="mr-1"
-        color="#0ea5e9"
+        sx={{
+          color: "#0ea5e9",
+        }}
         height={24}
         width={24}
       />
@@ -79,9 +89,11 @@ const statuses: Record<string, IStatus> = {
     color: "text-violet-600",
     text: "Listening to music.",
     icon: (
-      <Disc2
+      <SpeakerIcon
         className="mr-1"
-        color="#7c3aed"
+        sx={{
+          color: "#7c3aed",
+        }}
         height={24}
         width={24}
       />
@@ -89,7 +101,7 @@ const statuses: Record<string, IStatus> = {
   },
 };
 
-export default async function Status({ dataFromAPI }: IStatusComponentProps) {
+export default function Status({ dataFromAPI }: IStatusComponentProps) {
   const statusContent: IStatusData = {
     time: dataFromAPI?.time,
     status: statuses[`${dataFromAPI?.status}`],

@@ -9,10 +9,7 @@ async function getData() {
         ? process.env.URL_LASTFM_API_DEV
         : process.env.URL_LASTFM_API_PROD) as string,
       {
-        cache: "force-cache",
-        next: {
-          revalidate: 5,
-        },
+        cache: "no-cache",
       },
     );
 
@@ -60,6 +57,7 @@ export default async function Listening() {
   return currentTrack ? (
     <div
       className="listening-now
+        backdrop-blur-xs
         flex
         flex-row
         items-center
