@@ -1,6 +1,7 @@
 "use client";
 
-import { HeartCrack, Loader2 } from "lucide-react";
+import HeartBrokenIcon from "@mui/icons-material/HeartBroken";
+import LoopIcon from "@mui/icons-material/Loop";
 import { useEffect, useState } from "react";
 
 import type { LoadingProps } from "@/components/loading/loading.d";
@@ -36,11 +37,11 @@ export default function Loading({ serviceName }: LoadingProps) {
     >
       {serviceStatus ? (
         <>
-          <Loader2
+          <LoopIcon
             className="animate-spin
               duration-500
               mr-3"
-            color="#0ea5e9"
+            sx={{ color: "#0ea5e9" }}
             width={32}
             height={32}
           />
@@ -57,9 +58,9 @@ export default function Loading({ serviceName }: LoadingProps) {
         </>
       ) : (
         <>
-          <HeartCrack
+          <HeartBrokenIcon
             className="mr-3 opacity"
-            color="#FFFFFF33"
+            sx={{ color: "#FFFFFF33" }}
             width={24}
             height={24}
           />

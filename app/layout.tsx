@@ -9,8 +9,9 @@ const jost = Jost({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://trve.in"),
   title:
-    "Marcos Lima - Father, runner, cyclist, skateboarder & senior developer.",
-  description: "marcos lima, father, cyclist, skateboarder, senior developer",
+    "Marcos Lima - Father, street runner, skateboarder & senior developer.",
+  description:
+    "marcos lima, father, street runner, skateboarder, senior developer",
   openGraph: {
     type: "website",
     siteName: "Marcos Lima",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Image of Marcos Lima - Father, runner, cyclist, skateboarder & senior developer.",
+        alt: "Image of Marcos Lima - Father, street runner, skateboarder & senior developer.",
       },
     ],
   },
@@ -29,8 +30,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@skvggor",
     title:
-      "Marcos Lima - Father, runner, cyclist, skateboarder & senior developer.",
-    description: "Father, runner, cyclist, skateboarder & senior developer.",
+      "Marcos Lima - Father, street runner, skateboarder & senior developer.",
+    description: "Father, street runner, skateboarder & senior developer.",
     images: "/og-image.png",
   },
 };
