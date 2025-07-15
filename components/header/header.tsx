@@ -51,7 +51,7 @@ export default async function Header() {
       </a>,
     ],
     image: {
-      src: "/skate.jpg",
+      src: "/skate2.jpg",
       alt: "avatar",
       width: 200,
       height: 200,
