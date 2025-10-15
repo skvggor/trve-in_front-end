@@ -51,7 +51,7 @@ export default async function Header() {
       </a>,
     ],
     image: {
-      src: "/skate2.jpg",
+      src: "/plants.jpg",
       alt: "avatar",
       width: 200,
       height: 200,
@@ -100,13 +100,17 @@ export default async function Header() {
           width={headerContent.image.width}
           height={headerContent.image.height}
           className="image-avatar
+            aspect-square
             border-2
             border-gray-700
             duration-500
             group-hover:border-gray-500
+            h-full
+            object-cover
             p-0.5
             rounded-full
-            transition-all"
+            transition-all
+            w-full"
         />
 
         <span
