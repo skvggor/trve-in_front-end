@@ -29,28 +29,48 @@ const Background = () => {
 
     containerRef.current.appendChild(renderer.domElement);
 
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1500;
-    const posArray = new Float32Array(particlesCount * 3);
+    const colors = [
+      new THREE.Color(0.125, 0.549, 0.906),
+      new THREE.Color(0.125, 0.463, 0.812),
+      new THREE.Color(0.047, 0.369, 0.686),
+      new THREE.Color(0.027, 0.267, 0.561),
+      new THREE.Color(0.012, 0.176, 0.376),
+    ];
 
-    for (let i = 0; i < particlesCount * 3; i++)
-      posArray[i] = (Math.random() - 0.5) * 10;
+    const hexGeometry = new THREE.CylinderGeometry(0.02, 0.02, 0.01, 6);
 
-    particlesGeometry.setAttribute(
-      "position",
-      new THREE.BufferAttribute(posArray, 3),
-    );
+    const particlesGroup = new THREE.Group();
+    const particlesCount = 800;
+    const particles: THREE.Mesh[] = [];
 
+    for (let i = 0; i < particlesCount; i++) {
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-    const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.02,
-      color: 0x808080,
-      transparent: true,
-      opacity: 0.5,
-      blending: THREE.AdditiveBlending,
-    });
+      const material = new THREE.MeshBasicMaterial({
+        color: randomColor,
+        transparent: true,
+        opacity: 0.2,
+      });
 
-    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+      const particle = new THREE.Mesh(hexGeometry, material);
+
+      particle.position.set(
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 10,
+        (Math.random() - 0.5) * 10,
+      );
+
+      particle.rotation.set(
+        Math.random() * Math.PI * 2,
+        Math.random() * Math.PI * 2,
+        Math.random() * Math.PI * 2,
+      );
+
+      particles.push(particle);
+      particlesGroup.add(particle);
+    }
+
+    const particlesMesh = particlesGroup;
 
     scene.add(particlesMesh);
 
@@ -66,7 +86,6 @@ const Background = () => {
       }
     };
 
-
     const animate = () => {
       requestAnimationFrame(animate);
 
@@ -77,8 +96,17 @@ const Background = () => {
       const targetRotationX = -mouse.y * 0.2;
       const targetRotationY = mouse.x * 0.2;
 
-      particlesMesh.rotation.x += 0.02 * (targetRotationX - particlesMesh.rotation.x);
-      particlesMesh.rotation.y += 0.02 * (targetRotationY - particlesMesh.rotation.y);
+      particlesMesh.rotation.x +=
+        0.02 * (targetRotationX - particlesMesh.rotation.x);
+
+      particlesMesh.rotation.y +=
+        0.02 * (targetRotationY - particlesMesh.rotation.y);
+
+      for (const particle of particles) {
+        particle.rotation.x += 0.01;
+        particle.rotation.y += 0.01;
+        particle.rotation.z += 0.005;
+      }
 
       renderer.render(scene, camera);
     };
@@ -104,8 +132,13 @@ const Background = () => {
       if (containerRef.current)
         containerRef.current.removeChild(renderer.domElement);
 
-      particlesGeometry.dispose();
-      particlesMaterial.dispose();
+      hexGeometry.dispose();
+
+      for (const particle of particles) {
+        if (particle.material instanceof THREE.Material)
+          particle.material.dispose();
+      }
+
       renderer.dispose();
     };
   }, []);
