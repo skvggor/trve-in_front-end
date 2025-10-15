@@ -9,12 +9,12 @@ const jost = Jost({ subsets: ["latin"] });
 export const metadata: Metadata = {
   metadataBase: new URL("https://trve.in"),
   title:
-    "Marcos Lima - Father, street runner, skateboarder & senior developer.",
+    "Marcos Lima (skvggor) - Father, Sk8boarder, Music collector, Street runner, Cyclist & Senior SW dev.",
   description:
-    "marcos lima, father, street runner, skateboarder, senior developer",
+    "Father of two wonderful girls • Sk8boarder • Music collector • Street runner • Cyclist #fixedgear • Linux since 2009 • Senior SW dev at @radixeng",
   openGraph: {
     type: "website",
-    siteName: "Marcos Lima",
+    siteName: "Marcos Lima (skvggor)",
     locale: "pt_BR",
     url: "https://trve.in",
     images: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Image of Marcos Lima - Father, street runner, skateboarder & senior developer.",
+        alt: "Marcos Lima (skvggor) - Father of two wonderful girls, Sk8boarder, Music collector, Street runner, Cyclist & Senior SW dev.",
       },
     ],
   },
@@ -30,8 +30,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@skvggor",
     title:
-      "Marcos Lima - Father, street runner, skateboarder & senior developer.",
-    description: "Father, street runner, skateboarder & senior developer.",
+      "Marcos Lima (skvggor) - Father, Sk8boarder, Music collector, Street runner, Cyclist & Senior SW dev.",
+    description:
+      "Father of two wonderful girls • Sk8boarder • Music collector • Street runner • Cyclist #fixedgear • Linux since 2009 • Senior SW dev",
     images: "/og-image.png",
   },
 };
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: ReactNode;
+  readonly children: ReactNode;
 }) {
   return (
     <html lang="pt-BR">

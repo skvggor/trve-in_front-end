@@ -20,7 +20,7 @@ export default function Home() {
         min-h-[100dvh]
         pt-10
         px-3
-        md:pt-20
+        md:pt-12
         md:px-5
         tall:min-h-[768px]"
       >
