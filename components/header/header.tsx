@@ -36,7 +36,17 @@ export default async function Header() {
   const headerContent: IHeaderContent = {
     title: "skvggor",
     currentPosition: [
-      "Father — street runner — skateboarder — senior dev at ",
+      <span key="bio">
+        <span style={{ whiteSpace: "nowrap" }}>
+          Father of two wonderful girls
+        </span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* Sk8boarder</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* Music collector</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* Street runner</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* Cyclist #fixedgear</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* Linux since 2009</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* Senior SW dev at</span>{" "}
+      </span>,
       <a
         key="employer"
         href="https://www.radixeng.com/"
@@ -51,7 +61,7 @@ export default async function Header() {
       </a>,
     ],
     image: {
-      src: "/skate2.jpg",
+      src: "/plants.jpg",
       alt: "avatar",
       width: 200,
       height: 200,
@@ -76,7 +86,6 @@ export default async function Header() {
       className="site-header
         flex
         flex-col
-        group
         items-center
         justify-center
         w-full
@@ -100,13 +109,14 @@ export default async function Header() {
           width={headerContent.image.width}
           height={headerContent.image.height}
           className="image-avatar
+            aspect-square
             border-2
             border-gray-700
-            duration-500
-            group-hover:border-gray-500
+            h-full
+            object-cover
             p-0.5
             rounded-full
-            transition-all"
+            w-full"
         />
 
         <span
@@ -159,12 +169,9 @@ export default async function Header() {
       >
         <h1
           className="name
-            duration-500
             font-medium
-            group-hover:text-white
             text-5xl
             text-sky-300
-            transition-all
             uppercase
             md:ml-3
             md:text-6xl
@@ -179,36 +186,36 @@ export default async function Header() {
             my-5
             px-px
             py-px
-            rounded-full
-            w-100%
-            md:my-2
-            md:w-auto"
+            rounded-2xl
+            w-full
+            md:mt-2
+            md:mb-3
+            md:max-w-lg"
         >
           <section
             className="bg-[#020817]
               flex
               place-content-center
-              px-3
-              py-px
-              rounded-full
-              w-[100%]
-              md:w-auto"
+              px-4
+              py-3
+              rounded-2xl
+              w-full"
           >
             <h2
               className="current-position
                 font-normal
-                group-hover:text-white
                 text-center
-                text-lg
+                text-sm
                 text-sky-300
-                transition-all
-                leading-none
-                max-w-[250px]
-                py-2.5
-                md:max-w-[100%]
-                md:text-xl
-                md:tracking-tight
-                md:w-auto"
+                leading-relaxed
+                py-1
+                md:text-base
+                md:text-left
+                md:leading-normal"
+              style={{
+                wordBreak: "keep-all",
+                overflowWrap: "break-word",
+              }}
             >
               {headerContent.currentPosition}
             </h2>
