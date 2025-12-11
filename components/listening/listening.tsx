@@ -9,7 +9,7 @@ async function getData() {
         ? process.env.URL_LASTFM_API_DEV
         : process.env.URL_LASTFM_API_PROD) as string,
       {
-        cache: "no-cache",
+        next: { revalidate: 5 },
       },
     );
 
