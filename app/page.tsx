@@ -7,6 +7,8 @@ import Mastodon from "@/components/mastodon/mastodon";
 import Running from "@/components/running/running";
 import Social from "@/components/social/social";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <>
