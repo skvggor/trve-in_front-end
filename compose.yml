@@ -9,7 +9,7 @@ services:
       - caddy_net
     labels:
       - caddy=skvggor.dev, trve.in
-      - caddy.reverse_proxy={{upstreams}}
+      - caddy.reverse_proxy={{upstreams 3000}}
       - caddy.encode=zstd gzip
     expose:
       - 3000
