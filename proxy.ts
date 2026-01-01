@@ -11,9 +11,10 @@ export function proxy(request: NextRequest) {
   const referer = request.headers.get("referer") || "-";
   const userAgent = request.headers.get("user-agent") || "-";
 
-  console.log(
-    `${originalIp} - - [${timestamp}] "${method} ${url} ${proto}" - - "${referer}" "${userAgent}" "${clientIp}"`,
-  );
+  const logLine = `${originalIp} - - [${timestamp}] "${method} ${url} ${proto}" - - "${referer}" "${userAgent}" "${clientIp}"`;
+  console.log(logLine);
+
+  process.stdout.write(`${logLine}\n`);
 
   return NextResponse.next();
 }
