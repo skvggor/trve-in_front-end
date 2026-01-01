@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: trve-in
+    container_name: personal-website
     restart: unless-stopped
     networks:
       - caddy_net
