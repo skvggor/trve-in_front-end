@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const clientIp = request.headers.get("x-forwarded-for")?.split(",")[0] || "-";
   const originalIp = request.headers.get("cf-connecting-ip") || clientIp;
   const timestamp = new Date().toUTCString();
