@@ -12,13 +12,8 @@ export function proxy(request: NextRequest) {
   const userAgent = request.headers.get("user-agent") || "-";
 
   const logLine = `${originalIp} - - [${timestamp}] "${method} ${url} ${proto}" - - "${referer}" "${userAgent}" "${clientIp}"`;
-  console.log(logLine);
-
-  process.stdout.write(`${logLine}\n`);
+  console.log("[PROXY]", logLine);
+  process.stdout.write(`[PROXY] ${logLine}\n`);
 
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|public).*)"],
-};
