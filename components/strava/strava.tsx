@@ -1,9 +1,10 @@
+import DirectionsBike from "@mui/icons-material/DirectionsBike";
 import DirectionsRun from "@mui/icons-material/DirectionsRun";
 
 import Loading from "@/components/loading/loading";
-import type { IRunning } from "@/components/running/running.d";
+import type { IStrava } from "./strava.d";
 
-async function getData() {
+async function getData(type: string) {
   try {
     const response = await fetch(
       (process.env.APP_ENV === "development"
@@ -21,21 +22,29 @@ async function getData() {
       throw new Error("Failed to fetch data");
     }
 
-    return response.json();
+    const data = await response.json();
+    return data[type];
   } catch (error) {
-    console.error("components/running", error);
+    console.error("components/strava", error);
   }
 }
 
-export default async function Running() {
-  const runningContent: IRunning = {
+interface StravaProps {
+  type: "run" | "ride";
+  color?: string;
+}
+
+export default async function Strava({ type, color = "#0ea5e9" }: StravaProps) {
+  const stravaContent: IStrava = {
     currentYear: new Date().getFullYear(),
-    distance: await getData().then((data) => data?.distance),
+    distance: await getData(type),
   };
 
-  return runningContent.distance ? (
+  const icon = type === "run" ? <DirectionsRun /> : <DirectionsBike />;
+
+  return stravaContent.distance != null ? (
     <div
-      className="running
+      className="sport
         flex
         flex-row
         items-center
@@ -54,13 +63,23 @@ export default async function Running() {
         className="icon
           mr-3"
       >
-        <DirectionsRun
-          sx={{
-            color: "#0ea5e9",
-            width: 40,
-            height: 40,
-          }}
-        />
+        {type === "run" ? (
+          <DirectionsRun
+            sx={{
+              color,
+              width: 40,
+              height: 40,
+            }}
+          />
+        ) : (
+          <DirectionsBike
+            sx={{
+              color,
+              width: 40,
+              height: 40,
+            }}
+          />
+        )}
       </div>
 
       <div
@@ -75,7 +94,7 @@ export default async function Running() {
             text-sm
             text-white"
         >
-          {runningContent.currentYear}
+          {stravaContent.currentYear}
         </h3>
 
         <span
@@ -84,7 +103,7 @@ export default async function Running() {
             text-lg
             text-white/50"
         >
-          {runningContent.distance} km
+          {stravaContent.distance} km
         </span>
       </div>
     </div>

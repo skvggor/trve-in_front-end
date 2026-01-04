@@ -4,7 +4,7 @@ import Header from "@/components/header/header";
 import Listening from "@/components/listening/listening";
 import MadeBy from "@/components/madeBy/madeBy";
 import Mastodon from "@/components/mastodon/mastodon";
-import Running from "@/components/running/running";
+import Strava from "@/components/strava/strava";
 import Social from "@/components/social/social";
 
 export const dynamic = "force-dynamic";
@@ -57,7 +57,7 @@ export default function Home() {
             max-w-[1024px]
             md:flex-row"
           >
-            <Running />
+            <Strava type="run" />
             <Listening />
           </div>
 
