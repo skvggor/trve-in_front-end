@@ -33,7 +33,7 @@ export default async function Running() {
     distance: await getData().then((data) => data?.distance),
   };
 
-  return runningContent.distance ? (
+  return runningContent.distance != null ? (
     <div
       className="running
         flex
