@@ -1,4 +1,4 @@
-export interface IRunning {
+export interface IStrava {
   currentYear: number;
   distance: string;
 }
