@@ -23,7 +23,7 @@ async function getData(type: string) {
     }
 
     const data = await response.json();
-    return data[type];
+    return data?.distance;
   } catch (error) {
     console.error("components/strava", error);
   }
