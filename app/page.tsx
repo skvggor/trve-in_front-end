@@ -57,7 +57,7 @@ export default function Home() {
             max-w-[1024px]
             md:flex-row"
           >
-            <Strava type="run" />
+            <Strava type="ride" />
             <Listening />
           </div>
 
