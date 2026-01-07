@@ -18,7 +18,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT || 22 }}
           script: |
-            cd /root/projects/trve-in_front-end
+            cd /root/projects/personal-website
 
             git pull origin main
 
