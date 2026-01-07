@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import Image from "next/image";
 
 import type {
@@ -33,19 +34,23 @@ async function getData() {
 export default async function Header() {
   const data = await getData().then((data) => data);
 
+  const headersData = await headers();
+  const host = headersData.get("host") || "skvggor";
+  const _domain = host.split(":")[0].split(".")[0];
+
   const headerContent: IHeaderContent = {
-    title: "skvggor",
+    title: _domain,
     currentPosition: [
       <span key="bio">
         <span style={{ whiteSpace: "nowrap" }}>
-          Father of two wonderful girls
+          father of two wonderful girls
         </span>{" "}
-        <span style={{ whiteSpace: "nowrap" }}>* Sk8boarder</span>{" "}
-        <span style={{ whiteSpace: "nowrap" }}>* Music collector</span>{" "}
-        <span style={{ whiteSpace: "nowrap" }}>* Street runner</span>{" "}
-        <span style={{ whiteSpace: "nowrap" }}>* Cyclist #fixedgear</span>{" "}
-        <span style={{ whiteSpace: "nowrap" }}>* Linux since 2009</span>{" "}
-        <span style={{ whiteSpace: "nowrap" }}>* Senior SW dev at</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* sk8boarder</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* music collector</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* street runner</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* cyclist #fixedgear</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* linux since 2009</span>{" "}
+        <span style={{ whiteSpace: "nowrap" }}>* senior sw dev at</span>{" "}
       </span>,
       <a
         key="employer"
