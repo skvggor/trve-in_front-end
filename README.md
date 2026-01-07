@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Website
 
-## Getting Started
+Personal website built with Next.js, Material-UI, and Tailwind CSS.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js with App Router
+- React
+- Material-UI (MUI)
+- Tailwind CSS
+- TypeScript
+- Three.js (for 3D)
+
+## Development
+
+### Prerequisites
+
+- Node.js 24+
+- npm or yarn
+
+### Setup
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Configure environment variables (optional):
+
+```bash
+cp .env.example .env
+```
+
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Useful Commands
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run type-check` - TypeScript type checking
+- `npm run lint` - Code linting with Biome
+- `npm run build` - Production build
+- `npm run start` - Run production build
 
-## Learn More
+## Production
 
-To learn more about Next.js, take a look at the following resources:
+### Without Docker
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Build the project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+2. Start the server:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### With Docker
+
+#### Build Image
+
+```bash
+docker build -t personal-website .
+```
+
+#### Using Docker Compose
+
+1. Copy the example file:
+
+```bash
+cp compose.yml.example compose.yml
+```
+
+2. Edit `compose.yml` with your domains and settings
+3. Create Caddy network (if not exists):
+
+```bash
+docker network create caddy_net
+```
+
+4. Start containers:
+
+```bash
+docker compose up -d
+```
+
+## Deploy with Caddy
+
+The project is configured to work with Caddy through Docker Compose labels:
+
+- Automatic HTTPS configuration
+- Compression with zstd and gzip
+- Reverse proxy to port 3000
+
+### Example Configuration
+
+In `compose.yml`, configure the labels:
+
+```yaml
+labels:
+  - caddy=your-domain.com, www.your-domain.com
+  - caddy.reverse_proxy={{upstreams 3000}}
+  - caddy.encode=zstd gzip
+```
+
+## Project Structure
+
+```
+.
+├── app/          # App Router (Next.js)
+├── public/       # Static files
+├── components/   # React components
+├── styles/       # Global styles
+└── lib/          # Utilities
+```
+
+## Available Scripts
+
+- `dev` - Development server with Turbopack
+- `build` - Production build with type checking
+- `start` - Production server
+- `type-check` - TypeScript checking
+- `lint` - Linting with Biome
