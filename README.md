@@ -2,6 +2,8 @@
 
 Personal website built with Next.js, Material-UI, and Tailwind CSS.
 
+![Screenshot](./public/screenshot.png)
+
 ## Tech Stack
 
 - Next.js with App Router
